@@ -41,8 +41,8 @@
 - [x]  Create a `favoritesSlice.ts` to manage favorited content
 - [x]  Add "favorite" functionality to the `ContentCard`
 - [x]  Create a `/favorites` page to display favorited items
-- [ ]  Integrate a second API (e.g., TMDB for movies)
-- [ ]  Integrate a mock social media feed
+- [x]  Integrate a second API (e.g., TMDB for movies)
+- [x]  Integrate a mock social media feed
 - [ ]  Combine all data sources into a single, unified feed
 
 ---
