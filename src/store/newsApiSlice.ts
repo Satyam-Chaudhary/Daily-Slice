@@ -21,10 +21,26 @@ interface NewsApiResponse { //interface of API response
 }
 
 
+export interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  overview: string;
+  release_date: string;
+}
+
+interface TmdbApiResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
+
+
 const NEWS_API_BASE_URL = "https://newsapi.org/v2/";
+ 
 
-
-export const apiSlice = createApi({
+export const newsApiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
         baseUrl: NEWS_API_BASE_URL,
@@ -45,4 +61,4 @@ export const apiSlice = createApi({
     }),
 });
 
-export const { useGetNewsQuery } = apiSlice; //hook for each endpoint done by rtk query
+export const { useGetNewsQuery } = newsApiSlice; //hook for each endpoint done by rtk query

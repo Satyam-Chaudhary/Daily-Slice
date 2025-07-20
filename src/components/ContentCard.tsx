@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
-import type { Article } from "@/store/apiSlice";
+import type { Article } from "@/store/newsApiSlice";
 import { Heart } from "lucide-react";
 
 export default function ContentCard({ article }: { article: Article }) {

@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import uiReducer from './uiSlice';
-import { apiSlice } from './apiSlice';
+import { newsApiSlice } from './newsApiSlice';
+import { tmdbApiSlice } from './tmdbApiSlice';
 import preferencesReducer from './preferenceSlice';
-import favoritesReducer from './favoriteSlice'; 
+import favoritesReducer from './favoriteSlice';
+import { socialApiSlice } from './socialApiSlice';
 
 
 
@@ -11,10 +13,12 @@ export const store = configureStore({
     ui: uiReducer,
     preferences: preferencesReducer,
     favorites: favoritesReducer,
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    [newsApiSlice.reducerPath]: newsApiSlice.reducer,
+    [tmdbApiSlice.reducerPath]: tmdbApiSlice.reducer,
+    [socialApiSlice.reducerPath]: socialApiSlice.reducer,
   },
   middleware: (getDefaultMiddleWare) =>
-    getDefaultMiddleWare().concat(apiSlice.middleware)
+    getDefaultMiddleWare().concat(newsApiSlice.middleware).concat(tmdbApiSlice.middleware).concat(socialApiSlice.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

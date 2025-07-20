@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { Article } from './apiSlice'; // Import the Article type
+import type { Article } from './newsApiSlice'; // Import the Article type
 
 interface FavoritesState {
   articles: Article[];

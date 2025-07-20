@@ -1,0 +1,32 @@
+[
+  {
+    "id": "post1",
+    "username": "React Dev",
+    "handle": "@reactdev",
+    "avatarUrl": "https://via.placeholder.com/48/87CEFA/000000?text=RD",
+    "text": "Just refactored our app to use separate RTK Query slices for each API. The codebase is so much cleaner now! #React #Redux #CleanCode",
+    "timestamp": "2025-07-21T04:30:00Z",
+    "likes": 128,
+    "comments": 12
+  },
+  {
+    "id": "post2",
+    "username": "Next.js Fan",
+    "handle": "@nextjsfan",
+    "avatarUrl": "https://via.placeholder.com/48/000000/FFFFFF?text=NF",
+    "text": "The performance improvements with Server Components are incredible. It's a game changer for building fast, dynamic web applications.",
+    "timestamp": "2025-07-21T03:15:00Z",
+    "likes": 256,
+    "comments": 28
+  },
+  {
+    "id": "post3",
+    "username": "UI Designer",
+    "handle": "@uidesign",
+    "avatarUrl": "https://via.placeholder.com/48/FFC0CB/000000?text=UI",
+    "text": "Loving the consistency and ease of use with shadcn/ui and Tailwind CSS. Building beautiful, responsive UIs has never been faster. #UI #UX",
+    "timestamp": "2025-07-20T22:05:00Z",
+    "likes": 512,
+    "comments": 45
+  }
+]

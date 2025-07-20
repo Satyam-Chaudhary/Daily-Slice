@@ -45,7 +45,7 @@ export default function MainLayout({
     <div className="flex h-screen bg-background text-foreground">
       <aside className="w-64 flex-shrink-0 p-4 border-r hidden lg:block">
         <h1 className="text-2xl font-bold">
-          <Link href="/">Dashboard</Link>
+          <Link href="/">Daily-Slice</Link>
         </h1>
         <NavLinks />
       </aside>
@@ -64,7 +64,7 @@ export default function MainLayout({
                 <SheetContent side="left" className="w-64 p-4">
                   <SheetHeader className="text-left">
                     <SheetTitle>
-                      <Link href="/">Dashboard</Link>
+                      <Link href="/">Daily-Slice</Link>
                     </SheetTitle>
                   </SheetHeader>
                   <NavLinks />
