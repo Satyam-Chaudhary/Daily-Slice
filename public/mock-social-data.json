@@ -28,5 +28,55 @@
     "timestamp": "2025-07-20T22:05:00Z",
     "likes": 512,
     "comments": 45
+  },
+  {
+    "id": "post4",
+    "username": "TypeScript Pro",
+    "handle": "@tspro",
+    "avatarUrl": "https://via.placeholder.com/48/3178C6/FFFFFF?text=TS",
+    "text": "TypeScript 5.0's decorators are amazing! Finally have proper metadata reflection working seamlessly with our NestJS backend. #TypeScript #NestJS",
+    "timestamp": "2025-07-20T18:45:00Z",
+    "likes": 89,
+    "comments": 16
+  },
+  {
+    "id": "post5",
+    "username": "DevOps Engineer",
+    "handle": "@devopseng",
+    "avatarUrl": "https://via.placeholder.com/48/FF6B35/FFFFFF?text=DO",
+    "text": "Migrated our entire CI/CD pipeline to GitHub Actions. The developer experience is so much better now. Zero downtime deployments! 🚀",
+    "timestamp": "2025-07-20T16:20:00Z",
+    "likes": 203,
+    "comments": 31
+  },
+  {
+    "id": "post6",
+    "username": "Full Stack Dev",
+    "handle": "@fullstackdev",
+    "avatarUrl": "https://via.placeholder.com/48/9B59B6/FFFFFF?text=FS",
+    "text": "Working with Prisma and PostgreSQL has been a dream. The type safety across the entire stack is incredible. #Prisma #PostgreSQL #FullStack",
+    "timestamp": "2025-07-20T14:10:00Z",
+    "likes": 167,
+    "comments": 23
+  },
+  {
+    "id": "post7",
+    "username": "Mobile Dev",
+    "handle": "@mobiledev",
+    "avatarUrl": "https://via.placeholder.com/48/61DAFB/000000?text=MD",
+    "text": "React Native's new architecture is finally stable! The performance improvements are noticeable, especially on Android devices. #ReactNative",
+    "timestamp": "2025-07-20T11:30:00Z",
+    "likes": 324,
+    "comments": 52
+  },
+  {
+    "id": "post8",
+    "username": "GraphQL Expert",
+    "handle": "@graphqlexpert",
+    "avatarUrl": "https://via.placeholder.com/48/E10098/FFFFFF?text=GQ",
+    "text": "Apollo Client's new caching strategies have reduced our API calls by 60%. GraphQL + proper caching = developer happiness! #GraphQL #Apollo",
+    "timestamp": "2025-07-20T09:15:00Z",
+    "likes": 145,
+    "comments": 19
   }
 ]

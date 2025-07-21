@@ -3,16 +3,19 @@ import uiReducer from './uiSlice';
 import { newsApiSlice } from './newsApiSlice';
 import { tmdbApiSlice } from './tmdbApiSlice';
 import preferencesReducer from './preferenceSlice';
-import favoritesReducer from './favoriteSlice';
+import favoritesNewsReducer from './favoriteNewsSlice';
+import favoriteMoviesReducer from './favoriteMovieSlice';
+import favoriteSocialPostsReducer from './favoriteSocialPostsSlice';
 import { socialApiSlice } from './socialApiSlice';
-
 
 
 export const store = configureStore({
   reducer: {
     ui: uiReducer,
     preferences: preferencesReducer,
-    favorites: favoritesReducer,
+    favoritesNews: favoritesNewsReducer,
+    favoriteMovies: favoriteMoviesReducer,
+    favoriteSocialPosts: favoriteSocialPostsReducer,
     [newsApiSlice.reducerPath]: newsApiSlice.reducer,
     [tmdbApiSlice.reducerPath]: tmdbApiSlice.reducer,
     [socialApiSlice.reducerPath]: socialApiSlice.reducer,

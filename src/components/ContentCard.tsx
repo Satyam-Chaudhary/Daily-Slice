@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import type { RootState } from "@/store/store";
 import { useSelector, useDispatch } from "react-redux";
-import { addFavorite, removeFavorite } from "@/store/favoriteSlice";
+import { addNewsFavorite, removeNewsFavorite } from "@/store/favoriteNewsSlice";
 import {
   Card,
   CardContent,
@@ -27,7 +27,7 @@ export default function ContentCard({ article }: { article: Article }) {
   const isFavorite = useSelector((
     state: RootState //check if card is fav or not
   ) =>
-    state.favorites.articles.some(
+    state.favoritesNews.articles.some(
       (favArticle) => favArticle.url === article.url
     )
   );
@@ -44,9 +44,9 @@ export default function ContentCard({ article }: { article: Article }) {
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
-      dispatch(removeFavorite(article));
+      dispatch(removeNewsFavorite(article));
     } else {
-      dispatch(addFavorite(article));
+      dispatch(addNewsFavorite(article));
     }
   };
 

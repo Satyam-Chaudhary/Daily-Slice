@@ -9,14 +9,14 @@ const initialState: FavoritesState = {
   articles: [],
 };
 
-const favoritesSlice = createSlice({
+const favoritesNewsSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    addFavorite: (state, action: PayloadAction<Article>) => {
+    addNewsFavorite: (state, action: PayloadAction<Article>) => {
       state.articles.unshift(action.payload);
     },
-    removeFavorite: (state, action: PayloadAction<Article>) => {
+    removeNewsFavorite: (state, action: PayloadAction<Article>) => {
       state.articles = state.articles.filter(
         (article) => article.url !== action.payload.url
       );
@@ -24,6 +24,6 @@ const favoritesSlice = createSlice({
   },
 });
 
-export const { addFavorite, removeFavorite } = favoritesSlice.actions;
+export const { addNewsFavorite, removeNewsFavorite } = favoritesNewsSlice.actions;
 
-export default favoritesSlice.reducer;
+export default favoritesNewsSlice.reducer;

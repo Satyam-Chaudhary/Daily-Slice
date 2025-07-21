@@ -10,7 +10,7 @@ import { useGetSocialPostsQuery } from "@/store/socialApiSlice";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Separator } from "@/components/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function HomePage() {
   const categories = useSelector(
@@ -21,7 +21,7 @@ export default function HomePage() {
   const {
     data: news,
     isLoading: isNewsLoading,
-    isFetching: isNewsFetching, 
+    isFetching: isNewsFetching,
     isSuccess: isNewsSuccess,
     isError: isNewsError,
   } = useGetNewsQuery(primaryCategory);
@@ -39,27 +39,26 @@ export default function HomePage() {
     return `${categories.slice(0, 2).join(", ")}...`;
   };
 
-  //movie jsx
-  const movieSection = (
+
+  const socialSection = (
     <div className="mb-12">
-      <h2 className="text-3xl font-bold mb-4">Trending Movies This Week</h2>
-      {isMoviesLoading ? (
-        <div className="flex space-x-4 overflow-x-auto pb-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Skeleton key={i} className="h-[300px] w-[200px] rounded-lg" />
+      <h2 className="text-3xl font-bold mb-4">From Your Network</h2>
+      {isSocialLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Array.from({ length: 3 }).map((_, i) => (
+             <Skeleton key={i} className="h-[180px] w-full rounded-xl" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {moviesResponse?.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {socialPosts?.map((post) => (
+            <SocialPostCard key={post.id} post={post} />
           ))}
         </div>
       )}
     </div>
   );
-
-  //news jsx
+  
   const newsSection = (
     <div className="mb-12">
       <h2 className="text-3xl font-bold mb-4 capitalize">
@@ -91,33 +90,42 @@ export default function HomePage() {
     </div>
   );
 
-  //social-extension
-  const socialSection = (
+  const movieSection = (
     <div className="mb-12">
-      <h2 className="text-3xl font-bold mb-4">From Your Network</h2>
-      {isSocialLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Array.from({ length: 3 }).map((_, i) => (
-             <Skeleton key={i} className="h-[180px] w-full rounded-xl" />
+      <h2 className="text-3xl font-bold mb-4">Trending Movies This Week</h2>
+      {isMoviesLoading ? (
+        <div className="flex space-x-4 overflow-x-auto pb-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Skeleton key={i} className="h-[300px] w-[200px] rounded-lg" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {socialPosts?.map((post) => (
-            <SocialPostCard key={post.id} post={post} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {moviesResponse?.results.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
       )}
     </div>
   );
 
+
+
   return (
-    // 5. Pass the correct fetching state and render both sections
-    <MainLayout isFetching={isNewsFetching && !isNewsLoading}>
-      {socialSection}
-      {newsSection}
-      {/* <Separator/> */}
-      {movieSection}
+     <MainLayout isFetching={isNewsFetching && !isNewsLoading}>
+      <Tabs defaultValue="news" className="w-full">
+        <div className="flex items-center justify-between">
+            <h2 className="text-3xl font-bold">Your Feed</h2>
+            <TabsList>
+                <TabsTrigger value="news">News</TabsTrigger>
+                <TabsTrigger value="movies">Movies</TabsTrigger>
+                <TabsTrigger value="social">Social</TabsTrigger>
+            </TabsList>
+        </div>
+        <TabsContent value="social" className="mt-6">{socialSection}</TabsContent>
+        <TabsContent value="news" className="mt-6">{newsSection}</TabsContent>
+        <TabsContent value="movies" className="mt-6">{movieSection}</TabsContent>
+      </Tabs>
     </MainLayout>
   );
 }
