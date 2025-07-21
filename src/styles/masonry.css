@@ -1,0 +1,19 @@
+.my-masonry-grid {
+  display: -webkit-box; 
+  display: -ms-flexbox; 
+  display: flex;
+  margin-left: -24px; /* gutter size offset */
+  width: auto;
+}
+
+/* This is for each column in the grid */
+.my-masonry-grid_column {
+  padding-left: 24px; 
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  margin-bottom: 24px; 
+}
+/* 
+The 24px value should match the gap-6 class in Tailwind (1.5rem = 24px). */

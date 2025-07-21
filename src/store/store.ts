@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import uiReducer from './uiSlice';
 import { newsApiSlice } from './newsApiSlice';
 import { tmdbApiSlice } from './tmdbApiSlice';
-import preferencesReducer from './preferenceSlice';
+import preferencesReducer from './preferencesSlice';
 import favoritesNewsReducer from './favoriteNewsSlice';
 import favoriteMoviesReducer from './favoriteMovieSlice';
 import favoriteSocialPostsReducer from './favoriteSocialPostsSlice';

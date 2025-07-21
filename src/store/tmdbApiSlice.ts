@@ -25,7 +25,10 @@ export const tmdbApiSlice = createApi({
         getTrendingMovies: builder.query<TmdbApiResponse, void>({
             query: () => `/trending/movie/week?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
         }),
+        getTopRatedMovies: builder.query<TmdbApiResponse, void>({
+            query: () => `/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+        }),
     }),
 });
 
-export const { useGetTrendingMoviesQuery } = tmdbApiSlice;
+export const { useGetTrendingMoviesQuery, useGetTopRatedMoviesQuery } = tmdbApiSlice;
