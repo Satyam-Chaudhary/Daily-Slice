@@ -43,7 +43,7 @@
 - [x]  Create a `/favorites` page to display favorited items
 - [x]  Integrate a second API (e.g., TMDB for movies)
 - [x]  Integrate a mock social media feed
-- [ ]  Combine all data sources into a single, unified feed
+- [x]  Combine all data sources into a single, unified feed
 
 ---
 
