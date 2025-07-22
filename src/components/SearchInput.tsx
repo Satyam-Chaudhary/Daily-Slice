@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,6 @@ import { useGetSocialPostsQuery } from "@/store/socialApiSlice";
 
 export default function SearchInput() {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const urlQuery = searchParams.get("q");
 

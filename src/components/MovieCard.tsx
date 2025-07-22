@@ -10,6 +10,7 @@ import { Button } from "./ui/button";
 import { Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -62,12 +63,13 @@ const MovieCard = forwardRef<HTMLAnchorElement, { movie: Movie, layoutType?: 'gr
       whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
     >
       <Card className={cn("overflow-hidden border-2 border-transparent group-hover:border-primary transition-colors bg-card", { 'h-full': layoutType === 'grid' })}>
-        <CardContent className="p-0 rounded-sm">
-          <img
+        <CardContent className="p-0 relative aspect-[2/3]">
+          <Image
             src={imageUrl}
-            onError={handleImageError}
             alt={`Poster for ${movie.title}`}
-            className="w-full h-auto object-cover aspect-[2/3] rounded-sm" 
+            className="object-cover rounded-md"
+            fill={true}
+            sizes="(max-width: 768px) 50vw, 33vw"
           />
         </CardContent>
         <CardFooter className="p-2 flex items-center justify-between">

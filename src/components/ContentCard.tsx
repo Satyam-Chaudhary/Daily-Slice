@@ -17,6 +17,7 @@ import type { Article } from "@/store/newsApiSlice";
 import { Heart } from "lucide-react";
 import { motion } from "framer-motion"; 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -90,17 +91,20 @@ const ContentCard = forwardRef<HTMLDivElement, { article: Article, layoutType?: 
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <img
-          src={imageUrl}
-          onError={handleImageError}
-          alt={article.title}
-          className="rounded-md mb-4 w-full h-40 object-cover bg-muted"
-        />
-        <p className="text-sm text-muted-foreground line-clamp-3">
-          {article.description || "No description available for this article."}
-        </p>
-      </CardContent>
+     <CardContent className="flex-grow flex flex-col">
+          <div className="relative w-full h-40 mb-4">
+            <Image
+              src={imageUrl}
+              alt={article.title}
+              className="rounded-md object-cover"
+              fill={true}
+              unoptimized={true} // Allows images from any domain
+            />
+          </div>
+          <p className="text-sm text-muted-foreground line-clamp-3">
+            {article.description || "No description available for this article."}
+          </p>
+        </CardContent>
       <CardFooter>
         <Button asChild className="w-full">
           <a href={article.url} target="_blank" rel="noopener noreferrer">

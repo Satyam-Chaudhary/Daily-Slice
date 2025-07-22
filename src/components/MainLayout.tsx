@@ -11,10 +11,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import SettingsPanel from "./SettingsPanel";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store";
 import SearchInput from "./SearchInput";
-import { usePathname } from "next/navigation";
+
 
 const NavLinks = () => (
     <nav className="mt-8">
