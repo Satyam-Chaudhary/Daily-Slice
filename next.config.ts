@@ -8,6 +8,11 @@ const nextConfig = {
         port: '',
         pathname: '/t/p/**',
       },
+      // Add this block for your placeholder images
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
     ],
   },
 };

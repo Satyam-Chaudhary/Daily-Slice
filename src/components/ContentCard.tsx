@@ -45,12 +45,6 @@ const ContentCard = forwardRef<HTMLDivElement, { article: Article, layoutType?: 
     setImageUrl(article.urlToImage || fallbackImageUrl);
   }, [article.urlToImage]);
 
-  const handleImageError = () => {
-    if (imageUrl !== fallbackImageUrl) {
-      setImageUrl(fallbackImageUrl);
-    }
-  };
-
   const handleToggleFavorite = () => {
     if (isFavorite) {
       dispatch(removeNewsFavorite(article));
