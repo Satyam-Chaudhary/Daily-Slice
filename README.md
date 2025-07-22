@@ -10,6 +10,15 @@ A dynamic, user-centric dashboard that aggregates news, movie recommendations, a
 
 ![Project Showcase](./screenshots/showcase.png)
 *A preview of the main dashboard.*
+---
+
+## Project Walkthrough
+
+🎥 **[Watch the Full Demo](https://youtu.be/lIhtgrYw6pw)**
+
+*Get a comprehensive overview of all features and functionality in action.*
+
+---
 
 ## Features
 
