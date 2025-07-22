@@ -55,7 +55,6 @@ export default function UnifiedFeedTab() {
   const { ref, inView } = useInView({ threshold: 0.5 });
   const isMounted = useRef(false);
 
-  // --- Data Fetching ---
   const { data: news, isLoading: isNewsLoading, isFetching: isNewsFetching, isError: isNewsError } = useGetNewsQuery({ category: primaryCategory, page: pageNumbers.news });
   const { data: trendingMoviesData, isLoading: isTrendingLoading, isFetching: isTrendingFetching } = useGetTrendingMoviesQuery({ page: pageNumbers.movies }, { skip: movieFeedType !== 'trending' });
   const { data: topRatedMoviesData, isLoading: isTopRatedLoading, isFetching: isTopRatedFetching, isError: isMoviesError } = useGetTopRatedMoviesQuery({ page: pageNumbers.movies }, { skip: movieFeedType !== 'top_rated' });
@@ -97,7 +96,6 @@ export default function UnifiedFeedTab() {
     }
   }, [news, moviesResponse, isNewsError, isMoviesError]);
 
-  // --- Memoized Feed Computation ---
   const unifiedFeed = useMemo(() => {
     if (!news || !moviesResponse || !socialPosts) {
         return [];
@@ -109,7 +107,6 @@ export default function UnifiedFeedTab() {
     return interleaveArrays([transformedNews, transformedMovies, transformedSocial]);
   }, [news, moviesResponse, socialPosts]);
 
-  // --- Render Logic ---
   const isInitialLoading = (isNewsLoading && pageNumbers.news === 1) || (isMoviesLoading && pageNumbers.movies === 1) || isSocialLoading;
 
   if (isInitialLoading && unifiedFeed.length === 0) {
@@ -135,13 +132,10 @@ export default function UnifiedFeedTab() {
         ))}
       </Masonry>
       
-      {/* This is the section for the loader at the bottom */}
       <div ref={ref} className="flex justify-center items-center p-4 h-20">
-        {/* The spinner will show if we are fetching AND it's not the initial load */}
         {isFetchingMore && !isInitialLoading && (
             <Loader2 className="h-8 w-8 animate-spin" />
         )}
-        {/* The "end" message will show if both feeds have run out of pages */}
         {!hasMoreContent && unifiedFeed.length > 0 && (
           <p className="text-sm text-muted-foreground">You've reached the end of all content.</p>
         )}
