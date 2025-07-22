@@ -66,7 +66,7 @@ export default function UnifiedFeedTab() {
   const isMoviesLoading = movieFeedType === 'trending' ? isTrendingLoading : isTopRatedLoading;
 
   
-  useEffect(() => {
+  useEffect(() => { //hard reset
     if (isMounted.current) {
       setPageNumbers({ news: 1, movies: 1 });
       setHasMore({ news: true, movies: true });
@@ -75,7 +75,7 @@ export default function UnifiedFeedTab() {
     }
   }, [primaryCategory, movieFeedType]);
 
-  useEffect(() => {
+  useEffect(() => {//infinite scroll trigger
     if (inView && !isNewsFetching && !isMoviesFetching) {
       if (hasMore.news && hasMore.movies) {
         setPageNumbers(p => p.news <= p.movies ? { ...p, news: p.news + 1 } : { ...p, movies: p.movies + 1 });

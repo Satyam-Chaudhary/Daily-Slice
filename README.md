@@ -50,8 +50,8 @@
 ### **Phase 5: Advanced Features & Refinement 🚀**
 
 - [x]  Implement a debounced search bar
-- []  Implement infinite scrolling or pagination
-- [] Add drag-and-drop reordering for content cards (`react-dnd` or `framer-motion`)
+- [x]  Implement infinite scrolling or pagination
+- [ ] Add drag-and-drop reordering for content cards (`react-dnd` or `framer-motion`)
 - [ ]  Add subtle UI animations and transitions
 
 ---
