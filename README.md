@@ -52,22 +52,22 @@
 - [x]  Implement a debounced search bar
 - [x]  Implement infinite scrolling or pagination
 - [ ] Add drag-and-drop reordering for content cards (`react-dnd` or `framer-motion`)
-- [ ]  Add subtle UI animations and transitions
+- [x]  Add subtle UI animations and transitions
 
 ---
 
 ### **Phase 6: Testing 🧪**
 
-- [ ]  Write unit tests for Redux slices and utility functions
-- [ ]  Write integration tests for key components
-- [ ]  Set up an E2E testing framework (Cypress or Playwright)
-- [ ]  Write E2E tests for critical user flows (search, favorites, etc.)
+- [x]  Write unit tests for Redux slices and utility functions
+- [x]  Write integration tests for key components
+- [x]  Set up an E2E testing framework (Playwright)
+- [x]  Write E2E tests for critical user flows (search, favorites, etc.)
 
 ---
 
 ### **Phase 7: Finalization & Submission ✅**
 
-- [ ]  Perform final code cleanup and add documentation comments
+- [x]  Perform final code cleanup and add documentation comments
 - [ ]  Write a comprehensive `README.md` file
 - [ ]  Deploy the application to a hosting service (e.g., Vercel)
 - [ ]  Record a demo video of the application

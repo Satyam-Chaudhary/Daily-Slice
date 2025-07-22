@@ -55,6 +55,14 @@ export default function SearchInput() {
     setSearchTerm(urlQuery || "");
   }, [urlQuery]);
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && searchTerm) {
+      // We don't need to debounce here, just go straight to the results
+      addSearchToHistory(searchTerm);
+      router.push(`/search?q=${searchTerm}`);
+    }
+  };
+
   
   const handleFocus = () => { setIsFocused(true); setHistory(getSearchHistory()); };
   const handleHistoryClick = (term: string) => { setSearchTerm(term); };
@@ -75,6 +83,7 @@ export default function SearchInput() {
         className="pl-8 pr-8"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyDown}
         onFocus={handleFocus}
         onBlur={() => setTimeout(() => setIsFocused(false), 200)}
       />
