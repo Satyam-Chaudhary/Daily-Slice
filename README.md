@@ -2,9 +2,12 @@
 
 A dynamic, user-centric dashboard that aggregates news, movie recommendations, and social content into a unified, interactive, and endlessly scrollable feed.
 
-**Live Demo:** [dkjnsdk]
+**Live Demo:** [Link to your deployed Vercel URL]
 
 ---
+
+![Project Showcase](./screenshots/showcase.png)
+*A preview of the main dashboard.*
 
 ## Features
 
@@ -23,17 +26,37 @@ A dynamic, user-centric dashboard that aggregates news, movie recommendations, a
     - **Integration Tests** (React Testing Library) for component-Redux interactions.
     - **End-to-End Tests** (Playwright) for critical user journeys.
 
+## Showcase
+
+### Main Dashboard (Tabbed View - FeedTab)
+![Dashboard View - NewsTab](./screenshots/feedTab.png)
+### Main Dashboard (Tabbed View - NewsTab)
+![Dashboard View - NewsTab](./screenshots/newsTab.png)
+### Main Dashboard (Tabbed View - MoviesTab)
+![Dashboard View - MoviesTab](./screenshots/movieTab.png)
+
+### Search in Action (Quick Search & Results Page)
+![Search in Action](./screenshots/search.gif)
+
+### Favorites Page
+![Favorites View](./screenshots/favorites.png)
+
+### Settings Panel
+![Settings Panel](./screenshots/settingsPanel.png)
+
 ---
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **UI Components:** shadcn/ui
 - **State Management:** Redux Toolkit & RTK Query
 - **Animation:** Framer Motion
 - **Testing:** Jest, React Testing Library, Playwright
+
+---
 
 
 
