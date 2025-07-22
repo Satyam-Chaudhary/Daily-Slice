@@ -49,9 +49,9 @@
 
 ### **Phase 5: Advanced Features & Refinement 🚀**
 
-- [ ]  Implement a debounced search bar
-- [ ]  Implement infinite scrolling or pagination
-- [- ] Add drag-and-drop reordering for content cards (`react-dnd` or `framer-motion`)
+- [x]  Implement a debounced search bar
+- []  Implement infinite scrolling or pagination
+- [] Add drag-and-drop reordering for content cards (`react-dnd` or `framer-motion`)
 - [ ]  Add subtle UI animations and transitions
 
 ---
@@ -72,8 +72,6 @@
 - [ ]  Deploy the application to a hosting service (e.g., Vercel)
 - [ ]  Record a demo video of the application
 - [ ]  Review all submission guidelines one last time
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 

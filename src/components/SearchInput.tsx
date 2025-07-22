@@ -86,7 +86,7 @@ export default function SearchInput() {
 
       {/* recent search */}
       {showHistoryDropdown && (
-        <div className="absolute top-full mt-2 w-full bg-background/90 backdrop-blur-sm border rounded-md shadow-lg z-30">
+        <div className="absolute top-full mt-2 w-full bg-background/90 backdrop-blur-sm border rounded-md shadow-lg z-30 overflow-y-auto">
           <div className="flex justify-between items-center p-2 border-b">
             <p className="text-xs font-semibold text-muted-foreground">Recent Searches</p>
             <Button variant="link" className="text-xs h-auto p-0" onMouseDown={handleClearHistory}>Clear</Button>
