@@ -3,6 +3,18 @@
 import { useGetSocialPostsQuery } from "@/store/socialApiSlice";
 import SocialPostCard from "@/components/SocialPostCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import { motion } from "framer-motion";
+
+
+const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 export default function SocialTab() {
   const { data: socialPosts, isLoading: isSocialLoading } =
@@ -18,11 +30,16 @@ export default function SocialTab() {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {socialPosts?.map((post) => (
             <SocialPostCard key={post.id} post={post} />
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

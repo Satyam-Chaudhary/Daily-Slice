@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import type { RootState } from "@/store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { addNewsFavorite, removeNewsFavorite } from "@/store/favoriteNewsSlice";
@@ -15,8 +15,16 @@ import {
 import { Button } from "./ui/button";
 import type { Article } from "@/store/newsApiSlice";
 import { Heart } from "lucide-react";
+import { motion } from "framer-motion"; 
+import { cn } from "@/lib/utils";
 
-export default function ContentCard({ article }: { article: Article }) {
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const ContentCard = forwardRef<HTMLDivElement, { article: Article, layoutType?: 'grid' | 'masonry' }>(
+  ({ article, layoutType = 'masonry' }, ref) => {
   const dispatch = useDispatch();
   const fallbackImageUrl =
     "https://allroundclub.com/blog/wp-content/uploads/2021/10/how-to-draw-pikachu.png";
@@ -51,10 +59,20 @@ export default function ContentCard({ article }: { article: Article }) {
   };
 
   return (
-    <Card className="flex flex-col">
+    <motion.div
+      ref={ref}
+      variants={cardVariants}
+      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+      className={cn({ 'h-full': layoutType === 'grid' })}
+    >
+    <Card className="flex flex-col h-full">
       <CardHeader>
-        <CardTitle className="text-lg leading-tight">{article.title}</CardTitle>
-        <CardDescription>{article.source.name}</CardDescription>
+        <div className="flex justify-between items-start gap-4">
+            <div className="flex-1">
+              <CardTitle className="text-lg leading-tight">{article.title}</CardTitle>
+              <CardDescription>{article.source.name}</CardDescription>
+            </div>
+          </div>
         <div>
           <Button
             variant="ghost"
@@ -91,5 +109,10 @@ export default function ContentCard({ article }: { article: Article }) {
         </Button>
       </CardFooter>
     </Card>
+    </motion.div>
   );
-}
+});
+
+ContentCard.displayName = 'ContentCard';
+export default ContentCard;
+

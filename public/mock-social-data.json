@@ -78,5 +78,15 @@
     "timestamp": "2025-07-20T09:15:00Z",
     "likes": 145,
     "comments": 19
+  },
+  {
+    "id": "post9",
+    "username": "TypeScript Pro",
+    "handle": "@tspro",
+    "avatarUrl": "https://via.placeholder.com/48/3178C6/FFFFFF?text=TS",
+    "text": "TypeScript 5.0's decorators are amazing! Finally have proper metadata reflection working seamlessly with our NestJS backend. #TypeScript #NestJS",
+    "timestamp": "2025-07-20T18:45:00Z",
+    "likes": 89,
+    "comments": 16
   }
 ]

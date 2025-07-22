@@ -11,6 +11,17 @@ import {
 import MovieCard from "@/components/MovieCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
 
 export default function MoviesTab() {
   const movieFeedType = useSelector((state: RootState) => state.preferences.movieFeedType);
@@ -91,11 +102,16 @@ export default function MoviesTab() {
         <h2 className="text-3xl font-bold mb-4">
           {movieFeedType === "trending" ? "Trending Movies This Week" : "Top Rated Movies"}
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {moviesResponse.results.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
-        </div>
+        </motion.div>
         <div ref={ref} className="flex justify-center items-center p-4 h-20">
           {isMoviesFetching && !showSkeletons && <Loader2 className="h-8 w-8 animate-spin" />}
           {hasReachedEnd && !isMoviesFetching && (

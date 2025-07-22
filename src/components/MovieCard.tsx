@@ -1,19 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
 import { addMovieFavorite, removeMovieFavorite } from "@/store/favoriteMovieSlice";
 import type { Movie } from "@/store/tmdbApiSlice";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const MovieCard = forwardRef<HTMLAnchorElement, { movie: Movie, layoutType?: 'grid' | 'masonry' }>(({ movie, layoutType = 'masonry' }, ref) => {
   const dispatch = useDispatch();
-  const fallbackImageUrl = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/wjtxgr7yHM8aTVOhlUSycfVTspI.jpg";
-  
-
+  const fallbackImageUrl = "https://via.placeholder.com/500x750?text=No+Poster";  
   const [imageUrl, setImageUrl] = useState(
     movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : fallbackImageUrl
   );
@@ -28,12 +33,11 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     );
   }, [movie.poster_path]);
 
-  const handleImageError = () => {
+   const handleImageError = () => {
     if (imageUrl !== fallbackImageUrl) {
       setImageUrl(fallbackImageUrl);
     }
   };
-
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -45,22 +49,54 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     }
   };
 
+  const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
+
   return (
-    <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel="noopener noreferrer" className="block relative group">
-      <Card className="overflow-hidden border-2 border-transparent group-hover:border-primary transition-colors">
-        <CardContent className="p-0">
+    <motion.a
+      ref={ref}
+      href={`https://www.themoviedb.org/movie/${movie.id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block relative group"
+      variants={cardVariants}
+      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+    >
+      <Card className={cn("overflow-hidden border-2 border-transparent group-hover:border-primary transition-colors bg-card", { 'h-full': layoutType === 'grid' })}>
+        <CardContent className="p-0 rounded-sm">
           <img
             src={imageUrl}
             onError={handleImageError}
             alt={`Poster for ${movie.title}`}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover aspect-[2/3] rounded-sm" 
           />
         </CardContent>
+        <CardFooter className="p-2 flex items-center justify-between">
+           <div className="flex-1 min-w-0">
+            <p className="font-semibold text-sm truncate">{movie.title}</p>
+            <p className="text-xs text-muted-foreground">{releaseYear}</p>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="flex-shrink-0"
+            onClick={handleToggleFavorite}
+            aria-label="Toggle Favorite"
+          >
+            <Heart
+              className={`h-5 w-5 transition-colors ${
+                isFavorite
+                  ? "fill-red-500 stroke-red-500"
+                  // Use a theme-aware color for the non-favorited state
+                  : "text-muted-foreground"
+              }`}
+            />
+          </Button>
+        </CardFooter>
       </Card>
-      <Button
-        variant="secondary"
+      {/* <Button
+        variant="ghost"
         size="icon"
-        className="absolute top-2 right-2 h-9 w-9 opacity-80 group-hover:opacity-100 transition-opacity"
+        className="absolute top-2 right-2 h-9 w-9 rounded-full bg-black/40 hover:bg-black/60 text-white opacity-80 transition-opacity"
         onClick={handleToggleFavorite}
         aria-label="Toggle Favorite"
       >
@@ -68,10 +104,13 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           className={`h-5 w-5 transition-colors ${
             isFavorite
               ? "fill-red-500 stroke-red-500"
-              : "stroke-muted-foreground"
+              : "stroke-white" // Changed to white for better contrast
           }`}
         />
-      </Button>
-    </a>
+      </Button> */}
+    </motion.a>
   );
-}
+});
+
+MovieCard.displayName = 'MovieCard';
+export default MovieCard;

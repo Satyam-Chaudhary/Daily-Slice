@@ -42,7 +42,7 @@ export default function HomePage() {
           </TabsList>
         </div>
 
-        <div className="flex-1 overflow-y-auto mt-3">
+        <div className="flex-1 overflow-y-auto mt-3 p-3">
           <TabsContent value="all">
             <UnifiedFeedTab />
           </TabsContent>
