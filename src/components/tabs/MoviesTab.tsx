@@ -1,6 +1,7 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "@/store/store";
 import {
   useGetTrendingMoviesQuery,
@@ -8,19 +9,27 @@ import {
 } from "@/store/tmdbApiSlice";
 import MovieCard from "@/components/MovieCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import { startRefetch, endRefetch } from "@/store/loadingSlice";
 
 export default function MoviesTab() {
+  const dispatch = useDispatch();
   const movieFeedType = useSelector(
     (state: RootState) => state.preferences.movieFeedType
   );
 
-  const { data: trendingMoviesData, isLoading: isTrendingLoading } =
-    useGetTrendingMoviesQuery(undefined, {
+  const { 
+    data: trendingMoviesData, 
+    isLoading: isTrendingLoading,
+    isFetching: isTrendingFetching
+  } = useGetTrendingMoviesQuery(undefined, {
       skip: movieFeedType !== "trending",
     });
 
-  const { data: topRatedMoviesData, isLoading: isTopRatedLoading } =
-    useGetTopRatedMoviesQuery(undefined, {
+  const { 
+    data: topRatedMoviesData, 
+    isLoading: isTopRatedLoading,
+    isFetching: isTopRatedFetching
+   } = useGetTopRatedMoviesQuery(undefined, {
       skip: movieFeedType !== "top_rated",
     });
 
@@ -28,6 +37,17 @@ export default function MoviesTab() {
     movieFeedType === "trending" ? trendingMoviesData : topRatedMoviesData;
   const isMoviesLoading =
     movieFeedType === "trending" ? isTrendingLoading : isTopRatedLoading;
+  const isMovieFetching =
+    movieFeedType === "trending" ? isTrendingFetching : isTopRatedFetching;
+
+  useEffect(() => {
+    if (isMovieFetching && !isMoviesLoading) {
+      dispatch(startRefetch());
+      return () => {
+        dispatch(endRefetch());
+      };
+    }
+  }, [isMovieFetching, isMoviesLoading, dispatch]);
 
   return (
     <div>

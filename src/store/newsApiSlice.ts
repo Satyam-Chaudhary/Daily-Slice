@@ -58,7 +58,10 @@ export const newsApiSlice = createApi({
             // receives the category and returns the URL path and params
             query: (category) => `top-headlines?country=us&category=${category}`,
         }),
+         searchNews: builder.query<NewsApiResponse, string>({
+            query: (searchTerm) => `everything?q=${searchTerm}&sortBy=popularity`,
+        }),
     }),
 });
 
-export const { useGetNewsQuery } = newsApiSlice; //hook for each endpoint done by rtk query
+export const { useGetNewsQuery, useSearchNewsQuery } = newsApiSlice; //hook for each endpoint done by rtk query

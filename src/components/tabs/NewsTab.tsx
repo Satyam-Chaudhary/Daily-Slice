@@ -1,12 +1,15 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch} from "react-redux";
 import type { RootState } from "@/store/store";
 import { useGetNewsQuery } from "@/store/newsApiSlice";
 import ContentCard from "@/components/ContentCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import { startRefetch, endRefetch } from "@/store/loadingSlice";
 
 export default function NewsTab() {
+  const dispatch = useDispatch();
   const categories = useSelector(
     (state: RootState) => state.preferences.categories
   );
@@ -17,7 +20,17 @@ export default function NewsTab() {
     isLoading: isNewsLoading,
     isSuccess: isNewsSuccess,
     isError: isNewsError,
+    isFetching: isNewsFetching
   } = useGetNewsQuery(primaryCategory);
+
+   useEffect(() => {
+    if (isNewsFetching && !isNewsLoading) {
+      dispatch(startRefetch());
+      return () => {
+        dispatch(endRefetch());
+      };
+    }
+  }, [isNewsFetching, isNewsLoading, dispatch]);
 
   const formatPageTitle = () => {
     if (categories.length === 0) return "General";
@@ -26,7 +39,7 @@ export default function NewsTab() {
     return `${categories.slice(0, 2).join(", ")}...`;
   };
 
-  if (isNewsLoading) {
+  if (isNewsLoading || isNewsFetching) {
     return (
       <div>
         <h2 className="text-3xl font-bold mb-4 capitalize">

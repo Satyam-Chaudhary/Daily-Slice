@@ -28,7 +28,10 @@ export const tmdbApiSlice = createApi({
         getTopRatedMovies: builder.query<TmdbApiResponse, void>({
             query: () => `/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
         }),
+        searchMovies: builder.query<TmdbApiResponse, string>({
+            query: (searchTerm) => `/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${searchTerm}`,
+        }),
     }),
 });
 
-export const { useGetTrendingMoviesQuery, useGetTopRatedMoviesQuery } = tmdbApiSlice;
+export const { useGetTrendingMoviesQuery, useGetTopRatedMoviesQuery, useSearchMoviesQuery } = tmdbApiSlice;

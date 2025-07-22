@@ -7,6 +7,7 @@ import favoritesNewsReducer from './favoriteNewsSlice';
 import favoriteMoviesReducer from './favoriteMovieSlice';
 import favoriteSocialPostsReducer from './favoriteSocialPostsSlice';
 import { socialApiSlice } from './socialApiSlice';
+import loadingReducer from './loadingSlice'
 
 
 export const store = configureStore({
@@ -16,6 +17,7 @@ export const store = configureStore({
     favoritesNews: favoritesNewsReducer,
     favoriteMovies: favoriteMoviesReducer,
     favoriteSocialPosts: favoriteSocialPostsReducer,
+    loading: loadingReducer,
     [newsApiSlice.reducerPath]: newsApiSlice.reducer,
     [tmdbApiSlice.reducerPath]: tmdbApiSlice.reducer,
     [socialApiSlice.reducerPath]: socialApiSlice.reducer,
