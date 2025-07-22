@@ -2,7 +2,7 @@
 
 A dynamic, user-centric dashboard that aggregates news, movie recommendations, and social content into a unified, interactive, and endlessly scrollable feed.
 
-**Live Demo:** [Link to your deployed Vercel URL]
+**Live Demo:** [Click to Visit](https://daily-slice-omega.vercel.app/)
 
 ---
 
