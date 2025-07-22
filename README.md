@@ -168,7 +168,6 @@ A dynamic, user-centric dashboard that aggregates news, movie recommendations, a
 
 - [x]  Perform final code cleanup and add documentation comments
 - [x]  Write a comprehensive `README.md` file
-- []  Deploy the application to a hosting service (e.g., Vercel)
-- [ ]  Record a demo video of the application
-- [ ]  Review all submission guidelines one last time
-
+- [x]  Deploy the application to a hosting service (e.g., Vercel)
+- [x]  Record a demo video of the application
+- [x]  Review all submission guidelines one last time
