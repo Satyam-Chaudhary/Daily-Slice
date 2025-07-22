@@ -2,7 +2,7 @@
 
 A dynamic, user-centric dashboard that aggregates news, movie recommendations, and social content into a unified, interactive, and endlessly scrollable feed.
 
-<span style="color: red;">⚠️ **Important Note:**</span> **The deployed link will not work for All and News tabs due to NewsAPI's CORS restrictions and localhost-only access. Mock data is used in the deployed version to demonstrate functionality. For the complete experience with live news data, please clone the repository and run it locally.**
+> **⚠️ Important Note:** The deployed link will not work for All and News tabs due to NewsAPI's CORS restrictions and localhost-only access. Mock data is used in the deployed version to demonstrate functionality. For the complete experience with live news data, please clone the repository and run it locally.
 
 **Live Demo:** [Click to Visit](https://daily-slice-omega.vercel.app/)
 
