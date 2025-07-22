@@ -46,6 +46,10 @@ A dynamic, user-centric dashboard that aggregates news, movie recommendations, a
 ### Settings Panel
 ![Settings Panel](./screenshots/settingsPanel.png)
 
+
+### Infinite scroll in feed page
+![Infinte scroll](./screenshots/infinite.gif)
+
 ---
 
 ## Tech Stack
