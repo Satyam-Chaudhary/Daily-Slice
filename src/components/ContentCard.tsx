@@ -28,7 +28,7 @@ const ContentCard = forwardRef<HTMLDivElement, { article: Article, layoutType?: 
   ({ article, layoutType = 'masonry' }, ref) => {
   const dispatch = useDispatch();
   const fallbackImageUrl =
-    "https://allroundclub.com/blog/wp-content/uploads/2021/10/how-to-draw-pikachu.png";
+    "/fallback.png"
   const [imageUrl, setImageUrl] = useState(
     article.urlToImage || fallbackImageUrl
   );

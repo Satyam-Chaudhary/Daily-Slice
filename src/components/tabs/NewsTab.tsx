@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, forwardRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
 import { useGetNewsQuery } from "@/store/newsApiSlice";
@@ -34,7 +34,7 @@ export default function NewsTab() {
   const {
     data: news,
     isLoading: isNewsLoading,
-    isSuccess: isNewsSuccess,
+    // isSuccess: isNewsSuccess,
     isError: isNewsError,
     isFetching: isNewsFetching,
     error,

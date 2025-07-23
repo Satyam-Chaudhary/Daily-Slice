@@ -34,11 +34,11 @@ const MovieCard = forwardRef<HTMLAnchorElement, { movie: Movie, layoutType?: 'gr
     );
   }, [movie.poster_path]);
 
-   const handleImageError = () => {
-    if (imageUrl !== fallbackImageUrl) {
-      setImageUrl(fallbackImageUrl);
-    }
-  };
+  //  const handleImageError = () => {
+  //   if (imageUrl !== fallbackImageUrl) {
+  //     setImageUrl(fallbackImageUrl);
+  //   }
+  // };
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

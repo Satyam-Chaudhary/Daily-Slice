@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, Settings, Loader2 } from "lucide-react";
+import { Menu, Settings} from "lucide-react";
 import {
   Sheet,
   SheetContent,
