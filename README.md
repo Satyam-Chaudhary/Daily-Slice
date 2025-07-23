@@ -66,7 +66,7 @@ https://github.com/user-attachments/assets/6e93ece4-3e48-4d89-9c86-d71dec27f9a1
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Next.js(App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **UI Components:** shadcn/ui
